@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navbar } from "./component/Navbar";
+import Navbar  from "./component/Navbar";
 import Movies from "./component/Movies";
 import Watchlist from "./component/Watchlist";
 import Banner from "./component/Banner";
