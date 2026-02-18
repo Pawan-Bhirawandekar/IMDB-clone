@@ -21,31 +21,35 @@ import { Menu, Search, BookmarkPlus } from "lucide-react"
 
 const Navbar = () => {
   return (
-    <div className="w-full bg-black text-white px-4 py-2 flex items-center justify-between">
+    <div className="w-full bg-black text-white px-4 py-2 flex items-center justify-around">
 
       {/* LEFT SECTION */}
-      <div className="flex items-center space-x-6">
+      <div className="flex items-center space-x-6 font-bold text-xl">
 
         {/* Logo */}
-        <div className="bg-yellow-400 text-black font-bold px-2 py-1 rounded">
+        <Link to="/" className="bg-yellow-400 text-black font-bold px-2 py-1 rounded">
           IMDb
-        </div>
+        </Link>
 
         {/* Menu */}
-        <div className="flex items-center space-x-1 cursor-pointer">
+        <div className="flex items-center space-x-1 cursor-pointer pl-4 pr-0">
           <Menu size={20} />
           <span className="font-semibold">Menu</span>
         </div>
       </div>
 
       {/* CENTER SEARCH */}
-      <div className="flex items-center w-1/2">
+      <div className="flex items-center w-1/2 text-white bg-gray-200 rounded-md">
 
         {/* Dropdown */}
         <select className="bg-gray-200 text-black px-3 py-2 rounded-l-md outline-none">
           <option>All</option>
-          <option>Movies</option>
-          <option>Series</option>
+          <option>Titles</option>
+          <option>TV episods</option>
+          <option>Celebs</option>
+          <option>Companys</option>
+          <option>Keywords</option>
+          <option>Advanced Search</option>
         </select>
 
         {/* Search Input */}
