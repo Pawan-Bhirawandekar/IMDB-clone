@@ -57,8 +57,15 @@
 
 
 import React from 'react'
-
+import { useState } from "react";
 const Watchlist = ({ watchlist }) => {
+
+  const [search, setSearch] = useState('');
+  
+  let handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
   return (
     <>
       <div className='flex justify-center flex-wrap'>
@@ -75,6 +82,8 @@ const Watchlist = ({ watchlist }) => {
 
       <div className='flex justify-center my-4'>
         <input
+          onChange={handleSearch}
+          value={search}
           type='text'
           placeholder='Search For Movies'
           className='h-[3rem] w-[18rem] border border-gray-300 bg-gray-200 rounded-md px-4 py-2 outline-none focus:ring-2 focus:ring-blue-500'
@@ -94,7 +103,7 @@ const Watchlist = ({ watchlist }) => {
           </thead>
 
           <tbody>
-            {watchlist?.map((movie) => (
+            {watchlist?.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase())).map((movie) => (
               <tr key={movie.id} className='border-b-2'>
                 <td className='p-2 flex items-center justify-start gap-4 pl-25'>
                   <img
