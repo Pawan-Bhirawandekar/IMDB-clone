@@ -58,13 +58,25 @@
 
 import React from 'react'
 import { useState } from "react";
-const Watchlist = ({ watchlist }) => {
+import { ArrowUp, ArrowDown } from "lucide-react"
+const Watchlist = ({ watchlist, setWatchlist }) => {
 
   const [search, setSearch] = useState('');
   
   let handleSearch = (e) => {
     setSearch(e.target.value);
   }
+
+  let sortIncreasing = () => {
+    let sortedList = [...watchlist].sort((a, b) => a.vote_average - b.vote_average);
+    setWatchlist(sortedList);
+  }
+
+  let sortDecreasing = () => {
+    let sortedList = [...watchlist].sort((a, b) => b.vote_average - a.vote_average);
+    setWatchlist(sortedList);
+  }
+  
 
   return (
     <>
@@ -95,7 +107,11 @@ const Watchlist = ({ watchlist }) => {
           <thead className='border-b'>
             <tr>
               <th>Name</th>
-              <th>Ratings</th>
+              <div className='flex flex-row items-center justify-center cursor-pointer select-none '>
+                <div onClick={sortIncreasing}><ArrowUp size={20} /></div>
+                <th> Ratings </th>
+                <div onClick={sortDecreasing}><ArrowDown size={20} /></div>
+              </div>
               <th>Popularity</th>
               <th>Genre</th>
               <th>Action</th>
